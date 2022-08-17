@@ -1,0 +1,17 @@
+---
+# tasks file for github-branch-protection
+- name: Call API to update branch protection
+  uri:
+    url: "https://api.github.com/repos/{{ OWNER }}/{{ item }}/branches/master/protection"
+    method: PUT
+    body: '{"required_status_checks": null,"enforce_admins": null,"required_pull_request_reviews": {"required_approving_review_count": 1},"restrictions":null}'
+    headers:
+      Accept: "application/vnd.github+json"
+      Authorization: "token {{ TOKEN }}"
+      Content-Type: "application/x-www-form-urlencoded"
+    status_code: 200
+  register: result
+  with_items:
+    - "{{REPOS}}"
+#- debug:
+#    var: result

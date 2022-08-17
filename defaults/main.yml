@@ -1,0 +1,5 @@
+---
+# defaults file for github-branch-protection
+REPOS: ["jenkins-resources","hello-world"]
+OWNER: "<OWNER>"
+TOKEN: "<TOKEN>"
